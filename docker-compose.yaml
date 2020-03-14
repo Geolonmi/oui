@@ -5,10 +5,11 @@ services:
   db:
     image: mysql
     volumes:
-      - /var/lib/mysql
+      - ./sql_scripts/create_tables.sql:/docker-entrypoint-initdb.d/init.sql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: no_password
+      MYSQL_DATABASE: doudou
   # phpmyadmin
   phpmyadmin:
     depends_on:
